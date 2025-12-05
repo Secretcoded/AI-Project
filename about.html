@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About maniEd - Revolutionizing Digital Payments</title>
+    <meta name="description" content="Learn about maniEd's mission to make digital payments accessible, secure, and intelligent for everyone. Discover our story, values, and commitment to innovation.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary-teal: #12C2E9;
+            --primary-blue: #1E9AD6;
+            --neutral-white: #F7FBFC;
+            --neutral-gray: #94A7B3;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --dark-navy: #1E293B;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(18, 194, 233, 0.4);
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(247, 251, 252, 0.9);
+        }
+        
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-delay-1 { transition-delay: 0.1s; }
+        .stagger-delay-2 { transition-delay: 0.2s; }
+        .stagger-delay-3 { transition-delay: 0.3s; }
+        .stagger-delay-4 { transition-delay: 0.4s; }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+            border-radius: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% - 1rem);
+            background: linear-gradient(to bottom, var(--primary-teal), transparent);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .chat-widget {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+        
+        .chat-bubble {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(18, 194, 233, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .chat-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(18, 194, 233, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">m</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">maniEd</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a>
+                    <a href="about.html" class="text-blue-600 font-medium">About</a>
+                    <a href="features.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Features</a>
+                    <a href="faq.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">FAQ</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
+                    <button class="btn-primary text-white px-6 py-2 rounded-lg font-medium">Get Started</button>
+                </div>
+                
+                <div class="md:hidden">
+                    <button class="text-gray-700 hover:text-blue-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center reveal-element">
+                <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                    Revolutionizing Digital
+                    <span class="gradient-text">Payments</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                    At maniEd, we believe everyone deserves access to secure, intelligent, and seamless financial services. 
+                    Our mission is to democratize digital payments and empower individuals worldwide.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Story -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal-element">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+                        <p>
+                            Founded in 2020, maniEd emerged from a simple yet powerful vision: to make digital payments 
+                            accessible, secure, and intelligent for everyone. We recognized that traditional banking systems 
+                            were often slow, expensive, and exclusionary.
+                        </p>
+                        <p>
+                            Our team of fintech veterans, security experts, and AI specialists came together to build a 
+                            platform that would not only process payments efficiently but also provide intelligent insights 
+                            and personalized financial guidance through our AI assistant, Edibot.
+                        </p>
+                        <p>
+                            Today, maniEd serves millions of users worldwide, processing billions in transactions while 
+                            maintaining the highest standards of security and customer satisfaction. We're proud to be 
+                            at the forefront of the digital payment revolution.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="reveal-element stagger-delay-2">
+                    <img src="resources/hero-wallet.png" alt="maniEd Digital Wallet" class="w-full rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Mission & Values</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Everything we do is guided by our core values and mission to create a more inclusive financial future.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mission -->
+                <div class="md:col-span-2 lg:col-span-3 bg-white rounded-2xl p-8 shadow-lg reveal-element">
+                    <div class="text-center">
+                        <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                            To democratize access to financial services by providing secure, intelligent, and user-friendly 
+                            digital payment solutions that empower individuals and businesses worldwide.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Value 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal-element stagger-delay-1">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Security First</h3>
+                    <p class="text-gray-600">
+                        We prioritize the security and privacy of our users above all else, implementing bank-level 
+                        security measures and continuous monitoring.
+                    </p>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal-element stagger-delay-2">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Inclusive Access</h3>
+                    <p class="text-gray-600">
+                        Financial services should be accessible to everyone, regardless of location, income, or 
+                        technical expertise.
+                    </p>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal-element stagger-delay-3">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Continuous Innovation</h3>
+                    <p class="text-gray-600">
+                        We constantly push the boundaries of what's possible in financial technology, bringing 
+                        cutting-edge features to our users.
+                    </p>
+                </div>
+                
+                <!-- Value 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal-element stagger-delay-1">
+                    <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">User-Centric</h3>
+                    <p class="text-gray-600">
+                        Every decision we make is guided by what's best for our users, ensuring an exceptional 
+                        experience at every touchpoint.
+                    </p>
+                </div>
+                
+                <!-- Value 5 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal-element stagger-delay-2">
+                    <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Transparency</h3>
+                    <p class="text-gray-600">
+                        We believe in clear communication, honest pricing, and transparent business practices 
+                        that build long-term trust.
+                    </p>
+                </div>
+                
+                <!-- Value 6 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal-element stagger-delay-3">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Global Impact</h3>
+                    <p class="text-gray-600">
+                        We're committed to making a positive impact on global financial inclusion and 
+                        economic empowerment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Timeline -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Journey</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From a small startup to a global fintech leader, here's how maniEd has evolved.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-12">
+                    <!-- 2024 -->
+                    <div class="timeline-item reveal-element stagger-delay-1">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="text-2xl font-bold gradient-text">2024</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Current</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Global Expansion</h3>
+                            <p class="text-gray-600">
+                                Launched in 50+ countries with support for multiple currencies and languages. 
+                                Reached 10 million active users worldwide.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2023 -->
+                    <div class="timeline-item reveal-element stagger-delay-2">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="text-2xl font-bold gradient-text">2023</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">AI Integration</h3>
+                            <p class="text-gray-600">
+                                Introduced Edibot, our AI financial assistant, bringing intelligent insights and 
+                                personalized recommendations to millions of users.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2022 -->
+                    <div class="timeline-item reveal-element stagger-delay-3">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="text-2xl font-bold gradient-text">2022</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Series B Funding</h3>
+                            <p class="text-gray-600">
+                                Secured $100M in Series B funding to accelerate growth and expand our team. 
+                                Reached 1 million active users.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2021 -->
+                    <div class="timeline-item reveal-element stagger-delay-1">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="text-2xl font-bold gradient-text">2021</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Product Launch</h3>
+                            <p class="text-gray-600">
+                                Officially launched maniEd with core payment features and gained our first 100,000 users 
+                                within the first six months.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2020 -->
+                    <div class="timeline-item reveal-element stagger-delay-2">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="text-2xl font-bold gradient-text">2020</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Company Founded</h3>
+                            <p class="text-gray-600">
+                                maniEd was founded by a team of fintech experts with a vision to revolutionize 
+                                digital payments and received initial seed funding.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Impact</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Numbers that reflect our commitment to transforming digital payments.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="stat-card rounded-2xl p-8 text-center reveal-element stagger-delay-1">
+                    <div class="text-4xl font-bold gradient-text mb-2">10M+</div>
+                    <div class="text-gray-600 font-medium">Active Users</div>
+                </div>
+                
+                <div class="stat-card rounded-2xl p-8 text-center reveal-element stagger-delay-2">
+                    <div class="text-4xl font-bold gradient-text mb-2">$50B+</div>
+                    <div class="text-gray-600 font-medium">Transactions Processed</div>
+                </div>
+                
+                <div class="stat-card rounded-2xl p-8 text-center reveal-element stagger-delay-3">
+                    <div class="text-4xl font-bold gradient-text mb-2">50+</div>
+                    <div class="text-gray-600 font-medium">Countries Served</div>
+                </div>
+                
+                <div class="stat-card rounded-2xl p-8 text-center reveal-element stagger-delay-4">
+                    <div class="text-4xl font-bold gradient-text mb-2">99.9%</div>
+                    <div class="text-gray-600 font-medium">Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="reveal-element">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">
+                    Join Our Mission
+                </h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    Be part of the future of digital payments. Whether you're a user, developer, or partner, 
+                    there's a place for you in the maniEd ecosystem.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                        Get Started Today
+                    </button>
+                    <button class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors">
+                        Partner With Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">m</span>
+                        </div>
+                        <span class="text-2xl font-bold">maniEd</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        The future of digital payments. Secure, fast, and intelligent financial solutions for the modern world.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="features.html" class="hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Security</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Integrations</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="faq.html" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Status</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 maniEd. All rights reserved. Built with security and trust.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-bubble" onclick="toggleChat()">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+    
+    <!-- Botpress Webchat -->
+    <script src="https://cdn.botpress.cloud/webchat/v3.4/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/11/27/08/20251127085254-KKH00VPW.js" defer></script>
+</body>
+</html>
